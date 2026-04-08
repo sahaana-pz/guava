@@ -17,12 +17,12 @@
 package com.google.common.collect.testing;
 
 import static com.google.common.collect.testing.Helpers.mapEntry;
-import static com.google.common.collect.testing.ReflectionFreeAssertThrows.assertThrows;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyMap;
 import static java.util.Collections.emptySet;
 import static java.util.Collections.singleton;
 import static java.util.Collections.singletonMap;
+import static org.junit.Assert.assertThrows;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.J2ktIncompatible;
@@ -75,7 +75,7 @@ public abstract class MapInterfaceTest<K extends @Nullable Object, V extends @Nu
    * @throws UnsupportedOperationException if it's not possible to make an empty instance of the
    *     class under test.
    */
-  protected abstract Map<K, V> makeEmptyMap() throws UnsupportedOperationException;
+  protected abstract Map<K, V> makeEmptyMap();
 
   /**
    * Creates a new, non-empty instance of the class under test.
@@ -84,7 +84,7 @@ public abstract class MapInterfaceTest<K extends @Nullable Object, V extends @Nu
    * @throws UnsupportedOperationException if it's not possible to make a non-empty instance of the
    *     class under test.
    */
-  protected abstract Map<K, V> makePopulatedMap() throws UnsupportedOperationException;
+  protected abstract Map<K, V> makePopulatedMap();
 
   /**
    * Creates a new key that is not expected to be found in {@link #makePopulatedMap()}.
@@ -93,7 +93,7 @@ public abstract class MapInterfaceTest<K extends @Nullable Object, V extends @Nu
    * @throws UnsupportedOperationException if it's not possible to make a key that will not be found
    *     in the map.
    */
-  protected abstract K getKeyNotInPopulatedMap() throws UnsupportedOperationException;
+  protected abstract K getKeyNotInPopulatedMap();
 
   /**
    * Creates a new value that is not expected to be found in {@link #makePopulatedMap()}.
@@ -102,7 +102,7 @@ public abstract class MapInterfaceTest<K extends @Nullable Object, V extends @Nu
    * @throws UnsupportedOperationException if it's not possible to make a value that will not be
    *     found in the map.
    */
-  protected abstract V getValueNotInPopulatedMap() throws UnsupportedOperationException;
+  protected abstract V getValueNotInPopulatedMap();
 
   /**
    * Constructor that assigns {@code supportsIteratorRemove} the same value as {@code

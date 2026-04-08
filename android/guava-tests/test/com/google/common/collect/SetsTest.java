@@ -17,7 +17,6 @@
 package com.google.common.collect;
 
 import static com.google.common.collect.Iterables.unmodifiableIterable;
-import static com.google.common.collect.ReflectionFreeAssertThrows.assertThrows;
 import static com.google.common.collect.Sets.cartesianProduct;
 import static com.google.common.collect.Sets.newEnumSet;
 import static com.google.common.collect.Sets.newHashSet;
@@ -32,6 +31,7 @@ import static java.lang.System.arraycopy;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptySet;
 import static java.util.Collections.singleton;
+import static org.junit.Assert.assertThrows;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
@@ -514,9 +514,9 @@ public class SetsTest extends TestCase {
   }
 
   public void testNewIdentityHashSet() {
-    Set<Integer> set = Sets.newIdentityHashSet();
-    Integer value1 = new Integer(12357);
-    Integer value2 = new Integer(12357);
+    Set<MyInteger> set = Sets.newIdentityHashSet();
+    MyInteger value1 = new MyInteger(12357);
+    MyInteger value2 = new MyInteger(12357);
     assertTrue(set.add(value1));
     assertFalse(set.contains(value2));
     assertTrue(set.contains(value1));

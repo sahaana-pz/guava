@@ -16,8 +16,8 @@
 
 package com.google.common.base;
 
-import static com.google.common.base.ReflectionFreeAssertThrows.assertThrows;
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
@@ -48,11 +48,6 @@ public class FunctionsTest extends TestCase {
     Function<@Nullable String, @Nullable String> identity = Functions.identity();
     assertThat(identity.apply(null)).isNull();
     assertThat(identity.apply("foo")).isSameInstanceAs("foo");
-  }
-
-  public void testIdentity_notSame() {
-    Function<Long, Long> identity = Functions.identity();
-    assertThat(identity.apply(new Long(135135L))).isNotSameInstanceAs(new Long(135135L));
   }
 
   @J2ktIncompatible

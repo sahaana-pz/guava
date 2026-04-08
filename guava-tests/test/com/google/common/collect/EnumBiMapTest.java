@@ -16,10 +16,10 @@
 
 package com.google.common.collect;
 
-import static com.google.common.collect.ReflectionFreeAssertThrows.assertThrows;
 import static com.google.common.collect.testing.Helpers.mapEntry;
 import static com.google.common.collect.testing.Helpers.orderEntriesByKey;
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
@@ -190,13 +190,13 @@ public class EnumBiMapTest extends TestCase {
   @GwtIncompatible // keyType
   public void testKeyType() {
     EnumBiMap<Currency, Country> bimap = EnumBiMap.create(Currency.class, Country.class);
-    assertEquals(Currency.class, bimap.keyType());
+    assertThat(bimap.keyType()).isEqualTo(Currency.class);
   }
 
   @GwtIncompatible // valueType
   public void testValueType() {
     EnumBiMap<Currency, Country> bimap = EnumBiMap.create(Currency.class, Country.class);
-    assertEquals(Country.class, bimap.valueType());
+    assertThat(bimap.valueType()).isEqualTo(Country.class);
   }
 
   public void testIterationOrder() {

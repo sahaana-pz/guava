@@ -17,8 +17,8 @@
 package com.google.common.collect;
 
 import static com.google.common.collect.Maps.immutableEntry;
-import static com.google.common.collect.ReflectionFreeAssertThrows.assertThrows;
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
@@ -209,7 +209,7 @@ public class EnumHashBiMapTest extends TestCase {
   @GwtIncompatible // keyType
   public void testKeyType() {
     EnumHashBiMap<Currency, String> bimap = EnumHashBiMap.create(Currency.class);
-    assertEquals(Currency.class, bimap.keyType());
+    assertThat(bimap.keyType()).isEqualTo(Currency.class);
   }
 
   public void testEntrySet() {

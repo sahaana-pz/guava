@@ -18,8 +18,8 @@ package com.google.common.collect;
 
 import static com.google.common.collect.Maps.immutableEntry;
 import static com.google.common.collect.Maps.transformValues;
-import static com.google.common.collect.ReflectionFreeAssertThrows.assertThrows;
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.base.Function;
@@ -48,7 +48,7 @@ public class MapsTransformValuesUnmodifiableIteratorTest extends MapInterfaceTes
   // to a superclass.
 
   public MapsTransformValuesUnmodifiableIteratorTest() {
-    super(true, true, false /*supportsPut*/, true, true, false);
+    super(true, true, /* supportsPut= */ false, true, true, false);
   }
 
   private static class UnmodifiableIteratorMap<K, V> extends ForwardingMap<K, V> {
@@ -157,12 +157,12 @@ public class MapsTransformValuesUnmodifiableIteratorTest extends MapInterfaceTes
   }
 
   @Override
-  protected String getKeyNotInPopulatedMap() throws UnsupportedOperationException {
+  protected String getKeyNotInPopulatedMap() {
     return "z";
   }
 
   @Override
-  protected String getValueNotInPopulatedMap() throws UnsupportedOperationException {
+  protected String getValueNotInPopulatedMap() {
     return "26";
   }
 
@@ -368,7 +368,7 @@ public class MapsTransformValuesUnmodifiableIteratorTest extends MapInterfaceTes
     try {
       super.testKeySetRemoveAllNullFromEmpty();
     } catch (RuntimeException tolerated) {
-      // GWT's HashMap.keySet().removeAll(null) doesn't throws NPE.
+      // GWT's HashMap.keySet().removeAll(null) doesn't throw NPE.
     }
   }
 
@@ -377,7 +377,7 @@ public class MapsTransformValuesUnmodifiableIteratorTest extends MapInterfaceTes
     try {
       super.testEntrySetRemoveAllNullFromEmpty();
     } catch (RuntimeException tolerated) {
-      // GWT's HashMap.entrySet().removeAll(null) doesn't throws NPE.
+      // GWT's HashMap.entrySet().removeAll(null) doesn't throw NPE.
     }
   }
 }
